@@ -8,15 +8,9 @@ RUN apk --no-cache add --virtual .build-deps wget \
                                             build-base \
                                             linux-headers \
                                             libffi-dev
-RUN apk --no-cache add jpeg-dev \
-                       zlib-dev \
-                       freetype-dev \
-                       lcms2-dev \
-                       openjpeg-dev \
-                       tiff-dev \
-                       tk-dev \
-                       tcl-dev
+RUN apk --no-cache add openssl-dev cargo libressl-dev musl-dev libffi-dev
 RUN pip install -U --force-reinstall pip
+RUN python -m pip install --upgrade pip
 RUN wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py &&\
     python get-poetry.py &&\
     rm -f get-poetry.py

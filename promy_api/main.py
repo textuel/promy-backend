@@ -3,13 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from promy_api.infra.env import settings
-from promy_api.router import offers
+from promy_api.router import offers, companies
 
 app = FastAPI(title=settings.app_name, version=settings.version)
 
 app.add_middleware(CORSMiddleware, allow_origins=['*'])
 
 app.include_router(offers.router, prefix="/offers", tags=["offers"])
+app.include_router(companies.router, prefix="/companies", tags=["companies"])
 
 
 def dev():
